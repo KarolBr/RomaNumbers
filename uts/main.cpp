@@ -4,9 +4,22 @@
 //#include <cstdint>
 #include "RomanNumbers.h"
 
-TEST_CASE( "Factorials are computed", "[factorial]" ) {
-    REQUIRE( getRomanNumber("23") == "XXIII" );
-    REQUIRE( getRomanNumber("20") == "XX" );
-    REQUIRE( getRomanNumber("10") == "X" );
+TEST_CASE( "[units]", "Roman Numbers" ) {
     REQUIRE( getRomanNumber("5") == "V" );
+}
+
+TEST_CASE( "[tens]","Roman Numbers" ) {
+    REQUIRE( getRomanNumber("23") == "XXIII" );
+}
+
+TEST_CASE( "[hundreds]","Roman Numbers" ) {
+    REQUIRE( getRomanNumber("123") == "CXXIII" );
+}
+
+TEST_CASE( "[one thousands]","Roman Numbers" ) {
+    REQUIRE( getRomanNumber("1204") == "MCCIV" );
+}
+
+TEST_CASE( "[ten thousands and more]","Roman Numbers" ) {
+    REQUIRE( getRomanNumber("12223") == "outOfRange" );
 }
