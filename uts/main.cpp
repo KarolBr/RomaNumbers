@@ -17,7 +17,11 @@ TEST_CASE( "[hundreds]","Roman Numbers" ) {
 }
 
 TEST_CASE( "[one thousands]","Roman Numbers" ) {
-    REQUIRE( getRomanNumber("1204") == "MCCIV" );
+    REQUIRE( getRomanNumber("1234") == "MCCXXXIV" );
+}
+
+TEST_CASE( "[one thousands with zeros]","Roman Numbers" ) {
+    REQUIRE( getRomanNumber("1000") == "M" );
 }
 
 TEST_CASE( "[ten thousands and more]","Roman Numbers" ) {
