@@ -9,15 +9,15 @@ TEST_CASE( "[units]", "Roman Numbers" ) {
 }
 
 TEST_CASE( "[tens]","Roman Numbers" ) {
-    REQUIRE( getRomanNumber("23") == "XXIII" );
+    REQUIRE( getRomanNumber("24") == "XXIV" );
 }
 
 TEST_CASE( "[hundreds]","Roman Numbers" ) {
-    REQUIRE( getRomanNumber("123") == "CXXIII" );
+    REQUIRE( getRomanNumber("104") == "CIV" );
 }
 
 TEST_CASE( "[one thousands]","Roman Numbers" ) {
-    REQUIRE( getRomanNumber("1234") == "MCCXXXIV" );
+    REQUIRE( getRomanNumber("1004") == "MIV" );
 }
 
 TEST_CASE( "[one thousands with zeros]","Roman Numbers" ) {
