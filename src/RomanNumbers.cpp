@@ -7,20 +7,40 @@ std::vector<std::string> roman_tens = {"X", "XX", "XXX", "XL", "L", "LX", "LXX",
 std::vector<std::string> roman_hundreds = {"C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
 std::string roman_thousand = "M";
 
+
+std::string getRomanUnits(int index)
+{
+    std::string result{};
+    if(index){
+        result = roman_units[index - 1];
+    }
+    return result;
+}
+
+std::string getRomanTens(int index){
+    std::string result{};
+    if(index){
+        result = roman_tens[index - 1];
+    }
+    return result;
+}
+
+std::string getRomanHundreds(int index){
+    std::string result{};
+    if(index){
+        result = roman_hundreds[index - 1];
+    }
+    return result;
+}
+
+
 std::string getRomanNumber(std::string decimalNumber)
 {
     std::string romanNumber{};
     int sizeOfDecimalNumber = decimalNumber.size();
 
-    // podzielić decimalNumber na składowe: units,tens, hundreds and thousands
-
-    std::string my_units{};
-    std::string my_tens{};
-    std::string my_handreds{};
-    std::string my_thousends{};
-
     char singleNumbers[5];
-    int units_, tens_, hundreds_, thousends_;
+    int thousends_;
 
     // int sizeOfString = number.size();
 
@@ -33,70 +53,29 @@ std::string getRomanNumber(std::string decimalNumber)
     {
     case 1:
         // units
-        units_ = singleNumbers[0] - '0';
-        my_units = units[units_ - 1];
-
-        romanNumber = my_thousends + my_handreds + my_tens + my_units;
-
+        romanNumber = getRomanUnits(singleNumbers[0] - '0');
         break;
     case 2:
-        // tens
-        tens_ = singleNumbers[0] - '0';
-        my_tens = tens[tens_ - 1];
-        if (singleNumbers[1] != '0')
-        {
-            // units
-            units_ = singleNumbers[1] - '0';
-            my_units = units[units_ - 1];
-        }
-        romanNumber = my_thousends + my_handreds + my_tens + my_units;
-
+        //tens
+        romanNumber = getRomanTens(singleNumbers[0] - '0');
+        romanNumber += getRomanUnits(singleNumbers[1] - '0');
         break;
     case 3:
         // hundreds
-        hundreds_ = singleNumbers[0] - '0';
-        my_handreds = hundreds[hundreds_ - 1];
-        if (singleNumbers[1] != '0')
-        {
-            // tens
-            tens_ = singleNumbers[1] - '0';
-            my_tens = tens[tens_ - 1];
-        }
-        if (singleNumbers[2] != '0')
-        {
-            // units
-            units_ = singleNumbers[2] - '0';
-            my_units = units[units_ - 1];
-        }
-        romanNumber = my_thousends + my_handreds + my_tens + my_units;
-
+        romanNumber = getRomanHundreds(singleNumbers[0] - '0');
+        romanNumber += getRomanTens(singleNumbers[1] - '0');
+        romanNumber += getRomanUnits(singleNumbers[2] - '0');
         break;
     case 4:
         // thousends
         thousends_ = singleNumbers[0] - '0';
 
         for (int i = 0; i < thousends_; i++)
-            my_thousends += "M";
-        if (singleNumbers[1] != '0')
-        {
-            // hundreds
-            hundreds_ = singleNumbers[1] - '0';
-            my_handreds = hundreds[hundreds_ - 1];
-        }
-        if (singleNumbers[2] != '0')
-        {
-            // tens
-            tens_ = singleNumbers[2] - '0';
-            my_tens = tens[tens_ - 1];
-        }
-        if (singleNumbers[3] != '0')
-        {
-            // units
-            units_ = singleNumbers[3] - '0';
-            my_units = units[units_ - 1];
-        }
-        romanNumber = my_thousends + my_handreds + my_tens + my_units;
-
+            romanNumber += "M";
+        
+        romanNumber += getRomanHundreds(singleNumbers[1] - '0');
+        romanNumber += getRomanTens(singleNumbers[2] - '0');
+        romanNumber += getRomanUnits(singleNumbers[3] - '0');
         break;
     default:
         return "outOfRange";

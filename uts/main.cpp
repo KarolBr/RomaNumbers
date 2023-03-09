@@ -12,6 +12,10 @@ TEST_CASE( "[tens]","Roman Numbers" ) {
     REQUIRE( getRomanNumber("24") == "XXIV" );
 }
 
+TEST_CASE( "[tens with zero]","Roman Numbers" ) {
+    REQUIRE( getRomanNumber("20") == "XX" );
+}
+
 TEST_CASE( "[hundreds]","Roman Numbers" ) {
     REQUIRE( getRomanNumber("104") == "CIV" );
 }
