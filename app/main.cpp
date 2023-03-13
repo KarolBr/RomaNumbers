@@ -6,8 +6,6 @@
 
 int main(){
 
-	std::string str{};
-
 	std::cout<<"Hello, I'm RomanNumbers project"<<std::endl;
 	std::cout<<"Project name: "<<project_name<<std::endl;
     std::cout<<"Version: "<<project_version<<std::endl;

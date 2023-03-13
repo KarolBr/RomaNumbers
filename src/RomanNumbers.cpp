@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cctype>
 
 std::vector<std::string> roman_units = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
 std::vector<std::string> roman_tens = {"X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
@@ -34,10 +35,32 @@ std::string getRomanHundreds(int index){
 }
 
 
+bool isGoodStringToConvertIntoRoman(std::string data){
+    bool result = true;
+    
+    int sizeOfString = data.size();
+    if(sizeOfString>5){
+        return false;
+    }else{
+        for(int i=0;i<sizeOfString;i++){
+            if(!std::isdigit(static_cast<unsigned char>(data.at(i))))
+                result = false;
+        }
+    }
+
+    return result;
+}
+
 std::string getRomanNumber(std::string decimalNumber)
 {
+    if(!isGoodStringToConvertIntoRoman(decimalNumber))
+    return "outOfRange";
+
     std::string romanNumber{};
     int sizeOfDecimalNumber = decimalNumber.size();
+
+    //for
+
 
     char singleNumbers[5];
     int thousends_;
